@@ -1,0 +1,30 @@
+{
+  "name": "dojo-java-runner",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"npm:server:dev\" \"npm:client:dev\"",
+    "server:dev": "node --watch server/index.js",
+    "client:dev": "vite",
+    "build": "vite build",
+    "test": "node --test",
+    "start": "node -e \"process.env.NODE_ENV='production'; import('./server/index.js')\""
+  },
+  "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
+    "express": "^5.1.0",
+    "lucide-react": "^0.468.0",
+    "monaco-editor": "^0.57.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.2",
+    "vite": "^6.0.7"
+  },
+  "overrides": {
+    "dompurify": "^3.4.17"
+  }
+}

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" data-theme="slate" data-mode="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f1419" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icons/dojo.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icons/dojo-192.png" />
+    <meta
+      name="description"
+      content="A quiet, local Java workspace for data structures and algorithms practice."
+    />
+    <title>dojo</title>
+    <script>
+      (() => {
+        const themes = ['slate', 'moss', 'dusk', 'sand'];
+        const modes = ['light', 'dark'];
+        let theme = 'slate';
+        let mode;
+        try {
+          const savedTheme = localStorage.getItem('theme');
+          const savedMode = localStorage.getItem('mode');
+          if (themes.includes(savedTheme)) theme = savedTheme;
+          if (modes.includes(savedMode)) mode = savedMode;
+        } catch {
+          // Keep the defaults if browser storage is unavailable.
+        }
+        mode ||= matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.dataset.mode = mode;
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
